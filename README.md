@@ -1,21 +1,7 @@
 Always-On-Top-PS-Script
 =======================
 
-A PowerShell script that lets you select an open window to give the always on top attribute.  Great for when you are watching a video and want to make sure that window doesn't get covered by other windows as you move windows around.
-
-Credit:
-
-I found some of the code I needed at the following sources:
-
-The drop down list code:
-http://technet.microsoft.com/en-us/library/ff730949.aspx
-
-Always on top code:
-http://poshcode.org/1837
-
-Known bugs:
-
---it seems that windows explorer still is not showing up some times
---and two open powershell apps will sometimes get mixed up. (when I have ISE and a normal powershell console open)
+A PowerShell script that can be called from a batch script to give a window the always on top attribute. 
 
 
+### to enable open admin powershell and run 'Set-ExecutionPolicy RemoteSigned'
