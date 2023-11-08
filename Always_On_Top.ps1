@@ -1,5 +1,13 @@
 #Requires -Version 2.0 
 
+
+# to enable open admin powershell and run 'Set-ExecutionPolicy RemoteSigned'
+param(
+    [string]$chosenApplication
+)
+
+#$VerbosePreference = 'Continue'
+
 $signature = @"
 	
 	[DllImport("user32.dll")]  
@@ -96,8 +104,9 @@ function Get-WindowByTitle($WindowTitle="*")
 }
 
 
-function forceApplicationOnTop($chosenApplication){
-
+function forceApplicationOnTop {
+    param([string]$appName)
+	
     #Exaples:
 
     # set powershell console on top of other windows 
@@ -115,11 +124,11 @@ function forceApplicationOnTop($chosenApplication){
 
     Write-Host "Chosen Window: "$chosenApplication
 
-    $openApplications = getOpenApplications
+#    $openApplications = getOpenApplications
     
-    $openApplications | ForEach-Object {
-        Get-WindowByTitle $_.MainWindowTitle | Set-TopMost -Disable
-    }
+#    $openApplications | ForEach-Object {
+#        Get-WindowByTitle $_.MainWindowTitle | Set-TopMost -Disable
+#    }
 
     Get-WindowByTitle $chosenApplication | Set-TopMost 
 
@@ -183,12 +192,6 @@ function createDropdownBox($openApplications){
 
 }
 
-
 ############ Script starts here ###################
 
-$openApplications = getOpenApplications
-$chosenApplication = createDropdownBox($openApplications)
-forceApplicationOnTop($chosenApplication)
-
-
-
+forceApplicationOnTop -appName $chosenApplication
