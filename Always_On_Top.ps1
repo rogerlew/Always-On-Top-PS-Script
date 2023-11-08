@@ -1,7 +1,5 @@
 #Requires -Version 2.0 
 
-
-# to enable open admin powershell and run 'Set-ExecutionPolicy RemoteSigned'
 param(
     [string]$chosenApplication
 )
